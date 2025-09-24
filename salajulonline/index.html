@@ -1,0 +1,406 @@
+﻿<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sălajul Online</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background:; /* fundal pagină neschimbat */
+        }
+
+        .header {
+            background-image: url("img/header.png");
+            background-repeat: repeat-x;
+            background-position: top;
+            background-size: 120px 80px;
+            height: 100px;
+        }
+
+        .logo-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+            .logo-container img {
+                max-width: 600px;
+                height: auto;
+            }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding-bottom: 40px;
+        }
+
+        /* Chenar Curiozitati interactiv */
+        .curiosity-card {
+            background: #f9f9f9; /* gri deschis spre alb */
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+            .curiosity-card.active {
+                padding: 40px;
+                border-radius: 25px;
+            }
+
+            .curiosity-card h2 {
+                margin-top: 0;
+                font-size: 1.8em;
+                color: #333;
+            }
+
+            .curiosity-card p {
+                font-size: 1em;
+                color: #555;
+                line-height: 1.6;
+            }
+
+        /* Carduri turistice */
+        .tourist-card {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            margin: 20px 0;
+            background: #f9f9f9; /* gri deschis spre alb */
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+            .tourist-card:nth-child(even) .image-container {
+                order: 2;
+            }
+
+        .image-container {
+            flex: 1 1 200px;
+            min-width: 150px;
+            max-width: 300px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+            .image-container img, .image-container video {
+                width: 100%;
+                border-radius: 20px;
+                transition: all 0.3s ease;
+            }
+
+        .text-container {
+            flex: 2 1 300px;
+            padding: 20px;
+            background: #f9f9f9; /* gri deschis spre alb */
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .tourist-card:hover .text-container,
+        .tourist-card.active .text-container {
+            flex: 3 1 400px;
+            padding: 30px;
+            border-radius: 25px;
+        }
+
+        .title {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .details {
+            font-size: 1em;
+            color: #555;
+            max-height: 60px;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .tourist-card:hover .details,
+        .tourist-card.active .details {
+            max-height: 200px;
+        }
+
+        .geo-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5em;
+            color: #ff0000;
+            cursor: pointer;
+        }
+
+        a {
+            color: black !important; /* text negru */
+            text-decoration: none !important; /* fără subliniere */
+            transition: color 0.3s, border-bottom 0.3s;
+            border-bottom: 2px solid transparent; /* linie ascunsă inițial */
+        }
+
+            a:hover {
+                color: #111 !important; /* nuanță mai închisă la hover */
+                border-bottom: 2px solid black; /* linie fină la hover */
+            }
+
+        @media (max-width: 768px) {
+            .tourist-card, .curiosity-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+                .tourist-card:nth-child(even) .image-container {
+                    order: 0;
+                }
+
+            .text-container {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header"></div>
+
+    <div class="logo-container">
+        <img src="img/logo.png" alt="Logo-ul site-ului">
+    </div>
+
+    <div class="container">
+
+        <!-- Chenar Curiozitati -->
+        <div class="curiosity-card">
+            <h2>Curiozități despre județul Sălaj</h2>
+            <p>- În județul Sălaj se află localitatea cu cel mai scurt nume din țara noastră: <a href="https://maps.app.goo.gl/wmXhfcuh57mfMTqN6"><b>Ip</b></a>.</p>
+            <p>- Sălăjeanul <a href="https://www.guinnessworldrecords.com/world-records/most-letters-received-in-a-lifetime"><b>Gabriel Lavrincic</b></a> din <a href="https://maps.app.goo.gl/En7Z84bpC94Mkxms6"><b>comuna Marca</b></a> deține recordul mondial pentru cele mai multe scrisori primite - <b>22081</b>.</p>
+            <p>- Județul Sălaj are cele mai multe biserici de lemn din țară. Pe aceste meleaguri se mai păstrează <b>92 de biserici de lemn</b>, iar <b>68</b> au statutul de <b>monument istoric</b>.</p>
+            <p>- Într-o peșteră din <a href="https://maps.app.goo.gl/cfdfEDjz23zzRcnf9"><b>comuna Letca</b></a> sub Culmea Prisnel s-au descoperit primele picturi rupestre paleolitice de pe suprafața României.</p>
+        </div>
+
+        <!-- Card 1 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/porolissum.jpg" alt="Obiectiv 1">
+            </div>
+            <div class="text-container">
+                <div class="title">Castrul Roman - Porolissum</div>
+                <div class="details">
+                    Castrul Roman de la Porolissum a fost un avanpost militar strategic al Daciei romane, construit pentru a proteja granițele nord-vestice ale provinciei. Ruinele sale păstrează vestigii impresionante, precum ziduri, turnuri și porți, dar și urme ale vieții cotidiene a soldaților romani. În apropiere au existat și alte două castre romane, <a href="https://maps.app.goo.gl/oxgTt57UPqRXwcMA9"><b>Tihău</b></a> și <a href="https://maps.app.goo.gl/sJNXaMqDyFdsRwCo6"><b>Buciumi</b></a>, care împreună cu Porolissum formau un adevărat sistem defensiv, controlând rutele comerciale și asigurând securitatea întregii regiuni. Ansamblul oferă o imagine fascinantă asupra organizării militare romane și a influenței Romei în Dacia.
+                    <a href="https://porolissum.ro/#section-one">Website Porolissum</a>
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/U77Jj5ut819BD6d39', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/gradina1.webp" alt="">
+            </div>
+            <div class="text-container">
+                <div class="title">Grădina Botanică Vasile Fati - Jibou</div>
+                <div class="details">
+                    <p>
+                        <b>Grădina Botanică</b> din <b>Jibou</b> este un adevărat paradis al naturii, oferind vizitatorilor o colecție impresionantă de plante din întreaga lume. Fondată cu scop educativ și de cercetare, grădina cuprinde sere și spații tematice unde pot fi admirate specii exotice, plante rare și flori spectaculoase. Aleile liniștite și peisajele atent amenajate fac din vizită o experiență relaxantă și instructivă, ideală pentru iubitorii de natură, familii și pasionați de botanică. Grădina Botanică din Jibou este și un centru de conservare a biodiversității, promovând protejarea plantelor și educația ecologică.În serele grădinii pot fi găsite plante carnivore și orhidee rare din diverse colțuri ale lumii.
+
+                        Unele specii din grădină au <b>peste 100 de ani</b>, fiind adevărate “<b>fosile vii</b>” ale lumii vegetale.
+
+                        Grădina organizează anual evenimente tematice, precum expoziții de flori exotice sau ateliere de botanică pentru copii și adulți.
+
+                        Pe timpul verii, grădina devine un loc preferat pentru fotografii artistice datorită combinației spectaculoase de culori și forme ale plantelor.
+                    </p>
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/Y5U8y5ngTMmZq9gTA', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 3 - Video -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <video width="480" height="360" controls autoplay muted loop>
+                    <source src="media/alunis.mp4" type="video/mp4">
+                </video>
+            </div>
+            <div class="text-container">
+                <div class="title">Video nuntă Aluniș anii '70</div>
+                <div class="details">
+                    "Cum cobori încet la vale, Alunișu' îți iese-n cale". Videoclipul alăturat ne prezintă o nuntă tradițională din anii '70 în satul <b>Aluniș</b>. Descoperă Sălajul și cultura acestuia printr-un tur video.
+</div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/6ZMBkMRQvfnjjxY7A', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Cardurile 4-10 -->
+        <!-- Card 4 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/castel.webp" alt="Obiectiv 4">
+            </div>
+            <div class="text-container">
+                <div class="title">Castelul Wesselényi - Jibou</div>
+                <div class="details">
+                    <b>Castelul Wesselenyi</b> din <b>Jibou</b> construit între anii <b>1779-1810</b> este un impresionant edificiu istoric, construit în stil renascentist și ulterior adaptat cu influențe baroce. Fostă reședință a familiei nobiliare Wesselenyi, castelul impresionează prin arhitectura sa elegantă, interioarele spațioase și grădinile atent amenajate care îl înconjoară. Astăzi, castelul găzduiește diverse expoziții și evenimente culturale, fiind un important obiectiv turistic și cultural al zonei. Castelul este înconjurat de un parc cu alei și fântâni arteziene, un loc perfect pentru plimbări relaxante.
+
+    Unele camere păstrează mobilier și decor original din <b>secolele XVII–XVIII</b>, oferind o imagine autentică a vieții nobiliare.
+
+    Castelul Wesselenyi a fost transformat parțial în muzeu, cu expoziții dedicate istoriei familiei și culturii locale.
+
+    Legende locale spun că unele încăperi ale castelului sunt bântuite de spiritele vechilor proprietari, adăugând un aer misterios vizitei.
+</div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/KPKktRX9P6GLTmTeA', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 5 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/statuie.jpg" alt="Obiectiv 5">
+            </div>
+            <div class="text-container">
+                <div class="title">Statuia Maicii Domnului - Benesat</div>
+                <div class="details">
+                    <b>Statuia de piatră a Maicii Domnului</b> din <b>Benesat</b> este un important monument religios și cultural, realizat în <b>anul 1822</b>. Ansamblul este format din statuia centrală și elemente decorative de piatră care îi conturează perimetrul, având un design specific epocii și zonei. Statuia a fost restaurată recent de voluntarii Ambulanței pentru Monumente, fiind protejată și conservată pentru generațiile viitoare. Ea rămâne un simbol al credinței și al tradițiilor locale, fiind un punct de atracție pentru vizitatori și pelerini. Ansamblul inițial avea o piesă lipsă, care conținea ultima parte a pisaniei ce data monumentul, descoperită doar în documentațiile vechi.
+
+                    Statuia <b>a fost realizată manual de meșteșugari locali</b>, folosind tehnici tradiționale de cioplire a pietrei.
+
+                    De-a lungul timpului, vegetația a acoperit parțial monumentul, dar intervențiile recente au readus statuia la aspectul său original.
+
+                    Statuia reprezintă nu doar un obiect de cult, ci și o piesă de patrimoniu care reflectă istoria și cultura comunității din Benesat.
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/CkbkNM6wNEUo5yh26', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 6 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/biserica.jpg" alt="Obiectiv 6">
+            </div>
+            <div class="text-container">
+                <div class="title">Cea mai veche biserică de lemn din jud. Sălaj</div>
+                <div class="details">
+                    Biserica de lemn „<strong>Sfinții Arhangheli Mihail și Gavriil</strong>” din <b>Bulgari</b>, <b>comuna Sălățig</b>, este considerată <b>cea mai veche biserică de lemn din județul Sălaj care s-a păstrat intactă până în prezent</b>. Mențiunile bibliografice datează biserica din <b>anul 1547</b>, iar tradiția orală locală confirmă această dată. Biserica are un plan dreptunghiular cu absida semicirculară și este acoperită cu șindrilă. Turnul, cu foișor și fleșă ascuțită, se ridică deasupra navei. Construcția este realizată din bârne de lemn îmbinate la colțuri prin sistemul „coadă de rândunică”, având o talpă din lemn de stejar și fiind așezată pe un soclu din piatră. Inițial, biserica a fost acoperită cu tulpini de porumb, iar în <b>1783</b> a fost șindrilită.
+
+                    În apropierea bisericii se află o <b>răstignire din secolul al XIX-lea</b>, iar cărarea spre biserică a fost recent reabilitată cu trepte de lemn.
+
+                    Biserica este înscrisă în <b>Lista Monumentelor Istorice</b>.
+
+                    Această biserică reprezintă un exemplu remarcabil al arhitecturii religioase tradiționale din județul Sălaj și este un punct de atracție pentru iubitorii de istorie și arhitectură.
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/8BRjFSVCiny2vx517', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 7 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/celtice.jpg" alt="Obiectiv 7">
+            </div>
+            <div class="text-container">
+                <div class="title">Crucile Celtice</div>
+                <div class="details">
+                    Crucile celtice din județul Sălaj sunt vestigii istorice fascinante, care au stârnit numeroase dezbateri și cercetări. Aceste monumente funerare din piatră, cu un design circular în care este încastrată o cruce, sunt întâlnite în special în localitățile Năpradea și Ariniș.
+                    În cimitirul vechi din <b>Năpradea</b>, situat la <b>ieșirea spre Cheud</b>, au fost identificate <b>12 astfel de cruci</b>. Unele dintre ele au fost deteriorate și abandonate, dar au fost salvate și studiate de pasionați și specialiști. De exemplu, una dintre aceste cruci a fost dusă la <a href="https://maps.app.goo.gl/YaZDkACiDachS5Vh9"><b>Muzeul de Etnografie și Artă Populară din Baia Mare</b></a>, unde cercetătorii au considerat-o o dovadă a influenței celte asupra regiunii.   Crucile celtice din Sălaj sunt interpretate diferit de cercetători. Unii le consideră dovezi ale prezenței celților în această regiune, în timp ce alții le văd ca pe o influență culturală sau artistică. De asemenea, există și voci care contestă aceste teorii, considerând că aceste cruci sunt de origine medievală sau chiar moderne.
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/YkHRwGGuxNhzMHSj8', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 8 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/tusa1.jpg" alt="Obiectiv 8">
+            </div>
+            <div class="text-container">
+                <div class="title">Rezervația peisagistică Tusa - Barcău</div>
+                <div class="details">
+                    Situată în sud-vestul județului Sălaj, în comuna <b>Sâg</b>, aproape de granița cu județele Cluj și Bihor, <b>Rezervația peisagistică Tusa-Barcău</b> se întinde pe o suprafață de <b>13,43 hectare</b> și este protejată ca arie naturală de interes național din anul 2000. Această rezervație se află în partea sud-estică a <b>Munților Plopișului</b>, în apropierea izvoarelor Barcăului. Apele provin din <b>Platoul Carstic Ponor</b>, o zonă spectaculoasă și puțin umblată de turiști. Rezervația include un sector de pădure (făgete pure de dealuri și făgete amestecate), o zonă de pajiște, precum și două izbucuri (izvor cu debit de apă constant), care sunt elemente caracteristice ale peisajului carstic din zonă. zbucul Mare: Unul dintre cele mai impresionante izvoare din zonă, situat pe Platoul Carstic Ponor, unde apa iese la suprafață formând cascade spectaculoase .
+
+                    <b>Vârful Măgura Mare:</b> Cel mai înalt vârf al <b>Munților Plopiș</b>, cu o altitudine de <b>918 metri</b>.
+
+                    <b>Activități recreative:</b> Zona este ideală pentru drumeții, observarea florei și faunei specifice regiunii, precum și pentru fotografii ale peisajului montan.
+                    .
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/rgnhFiyzMwGPfteD7', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 9 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/treznea.jpg" alt="Obiectiv 9">
+            </div>
+            <div class="text-container">
+                <div class="title">Masacrele de la Treznea, Ip și Sărmașu</div>
+                <div class="details">
+                    <a href="https://maps.app.goo.gl/rmsoTc7u6vungMrBA"><b>Treznea (9 septembrie 1940):</b></a>
+                    Trupele horthyste au ucis <b>93 de persoane (români și evrei)</b>, inclusiv femei și copii, după Dictatul de la Viena. Victimele au fost împușcate sau înjunghiate; trupurile aruncate în gropi comune.
+
+                    <a href="https://maps.app.goo.gl/aKUtDNjtk8FnTDH26"><b>Ip (13–14 septembrie 1940):</b></a>
+                    Masacrul a vizat <b>157 de români</b>, inclusiv copii și un prunc nenăscut. Evenimentul a decimat comunitatea locală.
+
+                    <a href="https://maps.app.goo.gl/jdhbBJQMXxxhD5kw5"><b>Sărmașu (septembrie 1944):</b></a>
+                    Trupele horthyste au ucis <b>126 de evrei</b> și <b>39 de români</b>, victimele fiind torturate și executate în gropi comune.
+
+                    Comemorare:
+                    Monumente la <b>Treznea</b> și <b>Ip</b>, ceremonii anuale; tragediile amintesc de pericolele intoleranței și extremismului.
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/aEQxZN8inTARmabF9', '_blank')">📌</div>
+            </div>
+        </div>
+
+        <!-- Card 10 -->
+        <div class="tourist-card">
+            <div class="image-container">
+                <img src="img/muzeu.webp" alt="Obiectiv 10">
+            </div>
+            <div class="text-container">
+                <div class="title">Muzeul de Artă Populară „Ligia Alexandra Bodea” - Iaz</div>
+                <div class="details">
+                    Situat în satul <b>Iaz, comuna Plopiș</b>, muzeul păstrează tradițiile și meșteșugurile populare din Țara Silvaniei.
+
+                    Înființat în <b>2004</b> de <b>Ligia Alexandra Bodea</b>, în casa bunicii sale (sec. XIX), salvând-o de la demolare.
+
+                    Colecții: costume populare, ceramică, icoane pe sticlă, mobilier vechi, lăzi de zestre și obiecte de uz casnic.
+
+                    Casa muzeului reflectă arhitectura țărănească autentică din Transilvania.
+
+                    Organizare de ateliere și evenimente pentru copii și vizitatori interesați de meșteșuguri tradiționale.
+                </div>
+                <div class="geo-icon" onclick="window.open('https://maps.app.goo.gl/Ajeh9HnQ1cJBUexC9', '_blank')">📌</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        // Efect scroll: activează cardurile și chenarul de curiozitati când sunt vizibile
+        const items = document.querySelectorAll('.tourist-card, .curiosity-card');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                } else {
+                    entry.target.classList.remove('active');
+                }
+            });
+        }, { threshold: 0.5 });
+
+        items.forEach(item => observer.observe(item));
+    </script>
+
+</body>
+</html>
